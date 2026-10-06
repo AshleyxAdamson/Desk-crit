@@ -1,0 +1,24 @@
+{
+  "name": "desk-crit",
+  "displayName": "Desk Crit",
+  "version": "0.1.0",
+  "description": "Give feedback to a coding agent by talking over a screen recording and pointing at what you mean. Claude turns it into numbered notes, each tied to a time and a screenshot of what you pointed at, and can work through the fixes. Nothing uploads.",
+  "author": {
+    "name": "Ashley"
+  },
+  "homepage": "https://github.com/AshleyxAdamson/Desk-crit",
+  "repository": "https://github.com/AshleyxAdamson/Desk-crit",
+  "privacyPolicyUrl": "https://github.com/AshleyxAdamson/Desk-crit/blob/main/PRIVACY.md",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "keywords": [
+    "design",
+    "design-review",
+    "ui-feedback",
+    "screen-recording",
+    "critique",
+    "designer",
+    "transcription",
+    "local",
+    "apple-silicon"
+  ]
+}

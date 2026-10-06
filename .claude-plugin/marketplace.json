@@ -1,0 +1,16 @@
+{
+  "name": "desk-crit",
+  "description": "Desk Crit: a Claude plugin that turns a screen recording of your spoken feedback into notes with screenshots of what you pointed at. Free to use.",
+  "owner": {
+    "name": "Desk Crit"
+  },
+  "plugins": [
+    {
+      "name": "desk-crit",
+      "source": "./",
+      "description": "Record your screen, talk and point. Claude turns it into numbered notes, each with a time and a screenshot, and can work through the fixes in your code. Your recording stays on your machine.",
+      "homepage": "https://github.com/AshleyxAdamson/Desk-crit",
+      "repository": "https://github.com/AshleyxAdamson/Desk-crit"
+    }
+  ]
+}
