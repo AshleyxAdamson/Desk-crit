@@ -1,0 +1,13 @@
+Desk Crit uses a model made by other people. It doesn't include it.
+It downloads it on your say-so, from the host named below, into your own
+cache folder. Its license is theirs, and this file is where the credit
+lives. The plugin's own license is in LICENSE, and this file doesn't change it.
+
+Speech recognition: NVIDIA Parakeet TDT 0.6B v2, CC-BY-4.0
+  Made by NVIDIA.
+  Model card: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2
+  License: https://creativecommons.org/licenses/by/4.0/
+  Desk Crit downloads the MLX conversion made by the mlx-community, at one
+  pinned commit: https://huggingface.co/mlx-community/parakeet-tdt-0.6b-v2
+  The conversion is a change to the original model. The plugin doesn't
+  change it further.
