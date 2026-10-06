@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "desk-crit-server"
+version = "0.1.0"
+description = "Local MCP server for Desk Crit: transcribes a screen recording and takes screenshots at the moments that matter."
+requires-python = ">=3.11,<3.14"
+# One locked environment (uv.lock). No torch and no torchaudio: Desk Crit
+# keeps one speech model (Parakeet, through parakeet-mlx) and decodes frames
+# with ffmpeg. The speech and job files are copies inside the package; see
+# tools/sync-from-lumr.sh.
+dependencies = [
+    "mcp==2.2.0",
+    "numpy",
+    "pillow",
+    "parakeet-mlx==0.5.2",
+]
+
+[project.scripts]
+desk-crit-server = "desk_crit.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["desk_crit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+# `uv run --locked` installs the default groups. Empty means the plugin's
+# environment holds no pytest. Tests ask for it: `--group dev`.
+default-groups = []
+# The speech stack is mlx on Apple Silicon. The lock covers that one platform
+# and refuses to resolve for any other.
+environments = ["sys_platform == 'darwin' and platform_machine == 'arm64'"]

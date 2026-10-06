@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "desk-crit": {
+      "command": "sh",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/hooks/start-server.sh",
+        "${CLAUDE_PLUGIN_ROOT}",
+        "${CLAUDE_PLUGIN_DATA}"
+      ]
+    }
+  }
+}

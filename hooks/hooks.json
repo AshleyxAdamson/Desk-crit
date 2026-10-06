@@ -1,0 +1,16 @@
+{
+  "description": "Desk Crit first-run check. Silent when uv, ffmpeg and the Mac are fine. Installs no system software. On the first session it starts a background build of the plugin's own Python environment.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/doctor.sh\"",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
