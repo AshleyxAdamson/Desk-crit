@@ -32,3 +32,22 @@ def test_the_skill_names_no_tool_from_lumr_studio():
     text = SKILL.read_text()
     for gone in ("set_edit", "get_edit", "analyze_take", "preview", "render", "look", "review"):
         assert f"`{gone}`" not in text, gone
+
+
+def test_the_repo_level_skill_link_points_at_the_skill():
+    link = REPO / ".agents" / "skills" / "desk-crit"
+    assert link.is_symlink(), "a checkout needs .agents/skills/desk-crit as a symlink"
+    assert not link.readlink().is_absolute(), "the link has to be relative so a checkout can move"
+    assert link.resolve() == (REPO / "skills" / "desk-crit").resolve()
+    assert (link / "SKILL.md").is_file()
+
+
+def test_the_skill_name_is_its_folder_name():
+    front = SKILL.read_text().split("---")[1]
+    name = re.search(r"^name:\s*(\S+)\s*$", front, re.M).group(1)
+    assert name == SKILL.parent.name
+    assert re.search(r"^description:\s*\S", front, re.M)
+
+
+def test_the_skill_says_tools_may_carry_a_prefix():
+    assert "`desk-crit_frames`" in SKILL.read_text()
