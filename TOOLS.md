@@ -1,11 +1,16 @@
 # Desk Crit tool contract
 
 The agreement between the MCP server and the skill. The server implements
-these tools. The skill tells Claude how to use them. Change this file first,
+these tools. The skill tells the agent how to use them. Change this file first,
 then the code.
 
+Any agent that speaks MCP can call these tools. Claude Code starts the server
+through the plugin. Other agents start it with the launch command in the
+README's "Other agents" section, and some show the tools with a prefix, such
+as `desk-crit_frames`.
+
 Scope: one screen recording, from the file on disk to a set of screenshots
-Claude can look at. Nothing is cut or rendered, and the recording is never
+the agent can look at. Nothing is cut or rendered, and the recording is never
 changed.
 
 ## What the plugin offers
@@ -21,7 +26,7 @@ The server lists five tools: `transcribe`, `read_transcript`, `find_words`,
 - Results are short. A tool returns a summary and file paths. It never returns
   a whole transcript.
 - Failures return an error that says what was wrong and how to fix it, so
-  Claude can correct the call and retry.
+  the agent can correct the call and retry.
 - Times are seconds in the recording, as floats.
 - Long work returns a `job_id` at once. `job_status` reports on it.
 - Every tool carries `title`, `readOnlyHint`, and `destructiveHint`.
@@ -83,14 +88,14 @@ Nothing downloads until the creator says yes. The flow, in one tool:
 
 1. `transcribe` finds the model missing and answers `needs_models`:
    `models` is a list of `{name, size_mb, source_host, license, folder}`,
-   `total_mb` adds up the sizes as listed, and `note` tells Claude what to do.
-2. Claude tells the creator what would download, how big, from where and under
-   which license, and asks. Claude asks before it calls anything again.
-3. On a yes, Claude calls `transcribe` with `download_models: true`. The answer
+   `total_mb` adds up the sizes as listed, and `note` tells the agent what to do.
+2. The agent tells the creator what would download, how big, from where and under
+   which license, and asks. It asks before it calls anything again.
+3. On a yes, the agent calls `transcribe` with `download_models: true`. The answer
    is `{status: "downloading", job_id}`, and the job's kind is
    `download_models`. `job_status` reports it like any long job, with
    `progress` from 0 to 1 over the bytes of every file still to fetch.
-4. When the job is done, Claude calls `transcribe` again with the same
+4. When the job is done, the agent calls `transcribe` again with the same
    `video_path`. It goes on as if the model had been there.
 
 A second call with `download_models: true` while the job runs answers with the
@@ -104,7 +109,7 @@ written to `<name>.part`, checked, then renamed, so a file at its real name is
 whole and was checked. A `.part` left by a stopped download is resumed from
 its last byte (or started again when the server won't resume). A file that
 fails its checksum is deleted and the job fails with the reason. Nothing is
-installed, and Claude can offer to try once more. A stopped connection fails
+installed, and the agent can offer to try once more. A stopped connection fails
 the job and keeps what arrived. Not enough free disk fails it before the first
 byte. Files go to the cache other tools share and survive an uninstall:
 Hugging Face's (`~/.cache/huggingface/hub`, or `HF_HOME`).
@@ -162,7 +167,7 @@ END
 | words before, `[the word]`, words after | enough to tell which "this" it is |
 
 A longer list ends with `NEXT <time>` instead of `END`. Pass that time as
-`start` to continue. This is how Claude finds the exact moment of "this",
+`start` to continue. This is how the agent finds the exact moment of "this",
 "here" and "that".
 
 ### frames
@@ -176,7 +181,7 @@ Read only: no. Destructive: no. Writes one picture per time into the project's
 | `times` | list of floats, 1 to 6 | seconds, each from 0 to the recording's length |
 | `region` | list of 4 floats, optional | `[left, top, right, bottom]` as fractions of the frame (0 to 1), to zoom in on part of the screen. Applies to every time in the call. |
 
-Returns screenshots of the recording, as images Claude can see. For each
+Returns screenshots of the recording, as images the agent can see. For each
 time, in the order given, a line such as `Frame 2 of 3 at 1:23 (83.40 s). Find the cursor: what it's on is what the creator means.`
 and then that frame. Last comes one compact JSON block:
 

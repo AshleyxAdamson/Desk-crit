@@ -1,6 +1,6 @@
 ---
 name: desk-crit
-description: Use when a designer has a screen recording of an app or website with their spoken feedback, pointing at things with the cursor, and wants it turned into notes Claude can act on: each note tied to a time in the recording and a screenshot of what they were pointing at.
+description: Use when a designer has a screen recording of an app or website with their spoken feedback, pointing at things with the cursor, and wants it turned into notes the agent can act on: each note tied to a time in the recording and a screenshot of what they were pointing at.
 ---
 
 # Desk crit
@@ -12,6 +12,7 @@ You can't hear the recording, and you can't see it until you take a screenshot. 
 ## Ground rules
 
 - **The cursor is the creator's finger.** They point while they talk. In every screenshot, find the cursor before you read anything else: whatever it's on is what they mean by "this", "here" or "that". Say what's under it and where it sits. A screenshot you describe without finding the cursor is one you haven't read.
+- Your harness may show these tools with a prefix, such as `desk-crit_frames`. The short names in this skill are the part after the prefix.
 - Use the Desk Crit tools for the recording. Ordinary file and code tools are fine for the notes file and for fixes, but only after the creator says yes.
 - Never delete a file. If the creator wants old screenshots cleared, tell them the folder and let them do it.
 - The recording is never changed.

@@ -1,6 +1,6 @@
 # Privacy
 
-Last updated 2026-10-05.
+Last updated 2026-10-06.
 
 Desk Crit doesn't collect your data. It has no server, no accounts, no analytics and no telemetry. Nothing on your Mac is ever sent to the person who wrote it.
 
@@ -11,15 +11,15 @@ Questions about this page go to [GitHub Issues](https://github.com/AshleyxAdamso
 - Your recording and its audio. The plugin opens a file only when you name it to Claude, like "use desk-crit on this recording". It never browses your folders. It never uploads your recording or its audio, and it has no tool that could.
 - What it makes from them. The transcript and the screenshots. The section below says where each one lives.
 
-## What Claude sees
+## What your agent sees
 
-Desk Crit runs inside Claude Code, so Claude is part of the conversation. The plugin adds these to it:
+Desk Crit runs inside your coding agent, so the agent is part of the conversation. The plugin adds these to it:
 
 - The transcript text, in short packed lines.
 - The results of each tool.
-- The screenshots Claude takes with `frames`. They're whole frames from your recording, at the times Claude picks. In a screen recording that means anything that was visible on screen then, such as emails, names or keys. If something on screen is private, tell Claude which parts to skip.
+- The screenshots the agent takes with `frames`. They're whole frames from your recording, at the times the agent picks. In a screen recording that means anything that was visible on screen then, such as emails, names or keys. If something on screen is private, tell the agent which parts to skip.
 
-That goes wherever your Claude Code sends its requests, under your Claude plan's terms. Anthropic's policy is at https://www.anthropic.com/legal/privacy. The plugin doesn't add a second copy, and its author doesn't get one.
+That goes wherever your agent sends its requests. In Claude Code, that's under your Claude plan's terms. In OpenCode, Codex or another agent, it's that agent's model provider, under its terms. Anthropic's policy for Claude is at https://www.anthropic.com/legal/privacy. The plugin doesn't add a second copy, and its author doesn't get one.
 
 ## What the plugin downloads
 
@@ -45,12 +45,15 @@ The plugin keeps files on your Mac until you delete them. The author holds nothi
 | The transcript | `<recording>.words.json`, beside your recording. It's the only file the plugin puts in your recording's folder. Lumr Studio writes and reads the same file. | Delete the file |
 | The Python environment and `build.log` | The plugin's data folder, under `~/.claude/plugins/data/` | Uninstalling the plugin removes it |
 | The speech model | `~/.cache/huggingface/hub`, or under `HF_HOME` | Delete it by hand. It stays after an uninstall, because other tools share that cache. |
+| A backup of your agent's config | `opencode.json.bak-desk-crit` or `config.toml.bak-desk-crit`, beside the config file. Only made if you run `tools/setup-agent.sh` for OpenCode or Codex. | Delete the file |
+
+`tools/setup-agent.sh` is optional and only for OpenCode and Codex. It edits only the agent config file it names, `~/.config/opencode/opencode.json` or `~/.codex/config.toml`, and keeps a backup. It adds a link to the skill folder too. `--remove` takes both back out.
 
 No tool in the plugin deletes a file of yours.
 
 ## Children
 
-The plugin collects nothing from anyone, whatever their age. It's built for people who give feedback on their own work with Claude Code.
+The plugin collects nothing from anyone, whatever their age. It's built for people who give feedback on their own work with a coding agent.
 
 ## Changes
 

@@ -28,7 +28,7 @@ from desk_crit.mcp_results import tool_annotations as _annotations
 from desk_crit.mcp_results import json_text, result as _result, run as _run
 
 INSTRUCTIONS = (
-    "Desk Crit turns a screen recording with spoken feedback into notes Claude can act on. "
+    "Desk Crit turns a screen recording with spoken feedback into notes the agent can act on. "
     "Every tool except job_status takes the absolute path of the recording. Times are seconds "
     "in the recording. transcribe returns a job_id; call job_status with wait=50 until it is "
     "done. The plugin needs one model on this Mac, downloaded once: Parakeet (2.47 GB from "
