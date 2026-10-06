@@ -42,7 +42,7 @@ claude plugin marketplace add AshleyxAdamson/Desk-crit
 claude plugin install desk-crit@desk-crit
 ```
 
-To record, press Cmd-Shift-5, open Options and choose a microphone. Then record the screen, scroll through your app and talk. Point at things with the cursor as you say them. A recording with no voice has nothing to transcribe.
+To record, press Cmd-Shift-5, open Options and choose a microphone. Then record the screen, scroll through your app and talk. Point at things with the cursor as you say them: the cursor is how Claude knows what "this" means. A recording with no voice has nothing to transcribe.
 
 Start a session and tell Claude Code:
 

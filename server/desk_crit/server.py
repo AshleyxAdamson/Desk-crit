@@ -36,7 +36,8 @@ INSTRUCTIONS = (
     "before you pass download_models; nothing downloads without a yes. read_transcript reads the "
     "words in pages. find_words lists every place a word is said, with its time, so you can find "
     "the moments the creator pointed at something. frames shows what was on screen at any times "
-    "you pass, as images. No tool deletes or overwrites a file."
+    "you pass, as images. The creator points with the cursor while they talk, so in every frame find the "
+    "cursor first: whatever it's on is what they mean by this, here or that. No tool deletes or overwrites a file."
 )
 
 mcp = MCPServer("desk-crit", instructions=INSTRUCTIONS)
@@ -100,12 +101,12 @@ def frames(
         ),
     ] = None,
 ) -> CallToolResult:
-    """Screenshots of the recording, as images you can see, one per time, saved in the project's frames folder. Each is the frame that was on screen at that moment, not the next one: a screen recording only writes a frame when the picture changes. At most 6 a call. Pass region to zoom in on small text or a button. Each image comes with a line giving its time as m:ss; the last block is JSON with at, shown (the time of the frame actually on screen), clock, path, width and height for each frame, and source_size. Works with no transcript."""
+    """Screenshots of the recording, as images you can see, one per time, saved in the project's frames folder. Each is the frame that was on screen at that moment, not the next one: a screen recording only writes a frame when the picture changes. At most 6 a call. Find the cursor in each image before anything else: the creator points while they talk, so the element under the cursor is the one they mean by this, here or that. Say what it is and where it sits. Pass region to zoom in on small text or a button. Each image comes with a line giving its time as m:ss; the last block is JSON with at, shown (the time of the frame actually on screen), clock, path, width and height for each frame, and source_size. Works with no transcript."""
     data = _run(tools.frames, video_path, times, region)
     content: list[TextContent | ImageContent] = []
     total = len(data["frames"])
     for i, frame in enumerate(data["frames"], start=1):
-        content.append(TextContent(type="text", text=f"Frame {i} of {total} at {frame['clock']} ({frame['at']:.2f} s)"))
+        content.append(TextContent(type="text", text=f"Frame {i} of {total} at {frame['clock']} ({frame['at']:.2f} s). Find the cursor: what it's on is what the creator means."))
         mime = "image/png" if frame["path"].endswith(".png") else "image/jpeg"
         with open(frame["path"], "rb") as fh:
             picture = base64.b64encode(fh.read()).decode("ascii")

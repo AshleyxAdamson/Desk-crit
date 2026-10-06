@@ -177,7 +177,7 @@ Read only: no. Destructive: no. Writes one picture per time into the project's
 | `region` | list of 4 floats, optional | `[left, top, right, bottom]` as fractions of the frame (0 to 1), to zoom in on part of the screen. Applies to every time in the call. |
 
 Returns screenshots of the recording, as images Claude can see. For each
-time, in the order given, a line such as `Frame 2 of 3 at 1:23 (83.40 s)`
+time, in the order given, a line such as `Frame 2 of 3 at 1:23 (83.40 s). Find the cursor: what it's on is what the creator means.`
 and then that frame. Last comes one compact JSON block:
 
 ```json

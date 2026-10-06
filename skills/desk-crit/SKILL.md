@@ -11,6 +11,7 @@ You can't hear the recording, and you can't see it until you take a screenshot. 
 
 ## Ground rules
 
+- **The cursor is the creator's finger.** They point while they talk. In every screenshot, find the cursor before you read anything else: whatever it's on is what they mean by "this", "here" or "that". Say what's under it and where it sits. A screenshot you describe without finding the cursor is one you haven't read.
 - Use the Desk Crit tools for the recording. Ordinary file and code tools are fine for the notes file and for fixes, but only after the creator says yes.
 - Never delete a file. If the creator wants old screenshots cleared, tell them the folder and let them do it.
 - The recording is never changed.
@@ -67,7 +68,7 @@ A note is one thing the creator wants changed, a bug, a question, or something t
 For each note, call `frames`. It takes source seconds and shows the frame that was on screen at each one. Take:
 
 - one at the start of the note;
-- one at each pointing word: "this", "here", "that", "these", "this button". Call `find_words` with those words to get their exact times. The cursor is usually on the thing as the creator says the word;
+- one at each pointing word: "this", "here", "that", "these", "this button". Call `find_words` with those words to get their exact times. The cursor is on the thing as the creator says the word, so these screenshots are the ones that tell you what they mean;
 - if they're talking about something they just scrolled past ("that last section"), one more about 1 to 2 seconds before the note starts;
 - if the screen changes during a long note, one in the middle and one at the end too.
 
@@ -77,7 +78,7 @@ Don't take screenshots of stretches the creator said to skip.
 
 ## 5. Look, and name the element
 
-For each note, look at its screenshots. Say what's on screen and which element the creator means: its visible text, where it sits on the screen, and where the cursor is.
+For each note, look at its screenshots. Find the cursor first. The element under it is the one the creator means. Then say what's on screen and which element that is: its visible text, where it sits on the screen, and that the cursor is on it. If the cursor sits between things, or it's clearly resting somewhere while they talk about something else, say so and let their words decide.
 
 If you can't tell which element they mean, mark the note "unclear" and ask. Don't guess. A wrong guess sends the fix to the wrong place.
 

@@ -1,7 +1,7 @@
 {
   "name": "desk-crit",
   "displayName": "Desk Crit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Give feedback to a coding agent by talking over a screen recording and pointing at what you mean. Claude turns it into numbered notes, each tied to a time and a screenshot of what you pointed at, and can work through the fixes. Nothing uploads.",
   "author": {
     "name": "Ashley"

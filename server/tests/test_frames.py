@@ -467,8 +467,8 @@ def test_the_mcp_result_is_label_image_pairs_then_the_json(vfr):
     result = server.frames(str(vfr), [1.0, 7.0])
     kinds = [block.type for block in result.content]
     assert kinds == ["text", "image", "text", "image", "text"]
-    assert result.content[0].text == "Frame 1 of 2 at 0:01 (1.00 s)"
-    assert result.content[2].text == "Frame 2 of 2 at 0:07 (7.00 s)"
+    assert result.content[0].text == "Frame 1 of 2 at 0:01 (1.00 s). Find the cursor: what it's on is what the creator means."
+    assert result.content[2].text == "Frame 2 of 2 at 0:07 (7.00 s). Find the cursor: what it's on is what the creator means."
     assert all(block.mime_type == "image/png" for block in result.content if block.type == "image")
     data = json.loads(result.content[-1].text)
     assert data == result.structured_content

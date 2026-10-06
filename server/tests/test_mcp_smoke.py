@@ -110,7 +110,7 @@ def test_server_lists_its_five_tools_and_answers_them(video, plugin_data):
 
     assert not shots.is_error
     assert [block.type for block in shots.content] == ["text", "image", "text"]
-    assert shots.content[0].text == "Frame 1 of 1 at 0:05 (5.00 s)"
+    assert shots.content[0].text == "Frame 1 of 1 at 0:05 (5.00 s). Find the cursor: what it's on is what the creator means."
     assert shots.content[1].mime_type == "image/png" and shots.content[1].data
     assert json.loads(shots.content[2].text) == shots.structured_content
     assert shots.structured_content["source_size"] == [320, 240]
